@@ -1,0 +1,30 @@
+/*
+STATE
+*/
+.label-notstarted {
+    background-color: #001A33;
+}
+
+.label-loading {
+    background-color: #7AC5CD;
+}
+
+.label-verifiying {
+    background-color: #0F21A6;
+}
+
+.label-analizing {
+    background-color: #F08100;
+}
+
+.label-saving {
+    background-color: #5D08A2;
+}
+
+.label-waiting {
+    background-color: #F0D400;
+}
+
+.label-error {
+    background-color: #E50020;
+}

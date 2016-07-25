@@ -1,0 +1,20 @@
+{
+    "name": "ONZEReader",
+    "authors": [
+        {
+          "name": "Vicente Tobarra",
+          "email": "vicente.tobarra@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "slim/slim": "^3.1",
+        "slim/twig-view": "2.1.1",
+        "slim/php-view": "^2.0",
+        "twig/twig": "1.24",
+        "monolog/monolog": "^1.17",
+        "phpunit/phpunit": "5.3.0",
+        "j4mie/idiorm": "1.5.1",
+        "simplepie/simplepie": "1.4.0"
+    }
+}

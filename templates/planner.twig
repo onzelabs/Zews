@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Planner</title>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <link href="css/theme.css" rel="stylesheet" media="screen">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>TRACKER</th>
+                <th>STATE</th>
+                <!-- <th>STEP</th> -->
+                <th>PID</th>
+                <th>ACTIONS</th>
+                <th>PARAMETERS</th>
+                <th>DEBUG</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {% for tracker in trackers %}
+                <td>{{ tracker.name }}</th>
+                <td><span class="label {{ tracker.label_state }}">{{ tracker.state }}</span></td>
+                <!-- <td><span class="label {{ tracker.label_step }}">{{ tracker.step }}</span></td> -->
+                <td>{{ tracker.pid }}</td>
+                <td>
+                  <button type="button" class="btn btn-success btn-xs" aria-label="Left Align" {{ tracker.btn_run_disabled }} onclick="runTracker({{ tracker.id }});">
+                    <span class="glyphicon glyphicon glyphicon-play" aria-hidden="true"></span> Run
+                  </button>
+                  <!-- <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align" {{ tracker.btn_pause_disabled }} onclick="pauseTracker({{ tracker.id }});">
+                    <span class="glyphicon glyphicon glyphicon-pause" aria-hidden="true"></span> Pause
+                  </button> -->
+                  <button type="button" class="btn btn-danger btn-xs" aria-label="Left Align" {{ tracker.btn_stop_disabled }} onclick="stopTracker({{ tracker.id }});">
+                    <span class="glyphicon glyphicon glyphicon-stop" aria-hidden="true"></span> Stop
+                  </button>
+                  <!-- <button type="button" class="btn btn-default btn-xs" aria-label="Left Align" {{ tracker.btn_end_disabled }} onclick="endTracker({{ tracker.id }});">
+                    <span class="glyphicon glyphicon glyphicon-off" aria-hidden="true"></span> End
+                  </button> -->
+                </td>
+                <td>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="deleteTracker({{ tracker.id }});">
+                    <span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span> DELETE
+                  </button>
+                  <button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="initTracker({{ tracker.id }});">
+                    <span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span> INIT
+                  </button>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  </body>
+  <script>
+  function runTracker (id) {
+    $.get("../src/lib/scripts/runTracker.php",{id:id});
+  }
+
+  // function pauseTracker (id) {
+  //
+  // }
+
+  function stopTracker (id) {
+    $.get("../src/lib/scripts/stopTracker.php",{id:id});
+  }
+
+  function endTracker (id) {
+
+  }
+
+  function deleteTracker (id) {
+    $.get("../src/lib/scripts/deleteTracker.php",{id:id});
+  }
+
+  function initTracker (id) {
+    $.get("../src/lib/scripts/initTracker.php",{id:id});
+  }
+
+
+  </script>
+</html>
