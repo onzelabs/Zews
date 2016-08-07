@@ -7,15 +7,19 @@ $app->get('/reader', function ($request, $response, $args) {
 /* Sidebar */
 
 $app->post('/getItemsbyCategory', function ($request, $response, $args) {
-  $data=$request->getParsedBody();
+  $body=$request->getParsedBody();
+  $uri=$request->getUri();
+  $content=new content($uri->getPath(),$body['idCategory']);
 
-  return $data['idCategory'];
+  return $this->view->render($response, 'reader\content.twig',$content->data);
 });
 
 $app->post('/getItemsbyTracker', function ($request, $response, $args) {
-  $data=$request->getParsedBody();
+  $body=$request->getParsedBody();
+  $uri=$request->getUri();
+    $content=new content($uri->getPath(),$body['idTracker']);
 
-  return $data['idTracker'];
+  return $this->view->render($response, 'reader\content.twig',$content->data);
 });
 
 /* Content */
