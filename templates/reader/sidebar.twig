@@ -1,0 +1,34 @@
+<!-- Categoria 1 -->
+<div class="panel-group" role="tablist">
+    {% set i=0 %}
+    {% for name,trackers in categories %}
+      {% if name != 'Sin categoria' %}
+        {% set i=i+1 %}
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="collapseListGroupHeading{{ i }}">
+                <h4 class="panel-title">
+              <a class="list-category" data-category-id="1" role="button" data-toggle="collapse" href="#collapseListGroup{{ i }}" aria-expanded="true" aria-controls="collapseListGroup{{ i }}">
+                {{ name }}
+              </a>
+            </h4>
+            </div>
+            <div id="collapseListGroup{{ i }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading{{ i }}" aria-expanded="true">
+                <ul class="list-group">
+                    {% for tracker in trackers %}
+                    <li data-tracker-id="{{ tracker.tracker_id}}" class="list-group-item list-tracker">{{ tracker.tracker_name}}<span class="badge">14</span> </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+</div>
+
+<!-- Sin Categoria -->
+<div>
+    <ul class="list-group">
+        {% for tracker in categories['Sin categoria'] %}
+        <li data-tracker-id="{{ tracker.tracker_id}}" class="list-group-item list-tracker">{{ tracker.tracker_name}}<span class="badge">14</span> </li>
+        {% endfor %}
+    </ul>
+</div>

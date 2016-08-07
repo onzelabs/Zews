@@ -9,6 +9,7 @@ class trackerMapper extends BaseMapper {
     public function create () {
       return new Tracker ();
     }
+
 }
 
 ?>

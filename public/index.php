@@ -24,7 +24,10 @@ require __DIR__ . '/../src/middleware.php';
 
 // Register routes
 require __DIR__ . '/../src/routes.php';
-require __DIR__ . '/../src_reader/routes.php';
+
+// Reader
+require __DIR__ . '/../src_reader/00 config/settings.php';
+require __DIR__ . '/../src_reader/00 config/routes.php';
 
 
 // Run app

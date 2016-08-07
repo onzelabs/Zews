@@ -11,6 +11,7 @@ abstract class abstractTracker extends baseDO {
     protected $last_listen;
     protected $active;
     protected $event;
+    protected $category_ix;
     protected $created_at;
     protected $updated_at;
     // Not in model
@@ -300,6 +301,14 @@ abstract class abstractTracker extends baseDO {
 
     public function set_event($event){
         $this->event = $event;
+    }
+
+    public function get_category_ix(){
+        return $this->category_ix;
+    }
+
+    public function set_category_ix($category_ix){
+        $this->category_ix = $category_ix;
     }
 
     public function get_created_at(){

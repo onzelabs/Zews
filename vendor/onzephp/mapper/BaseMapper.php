@@ -33,6 +33,7 @@ abstract class BaseMapper implements iBaseMapper {
 
     public function get_by_query ($sql) {
         $result=ORM::for_table($this->table)->raw_query($sql)->find_many();
+
         if (sizeof($result)==1) {
           $result=$result[0];
         }
