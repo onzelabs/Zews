@@ -2,6 +2,8 @@ $(window).load(function() {
 
   $('.list-category').click( function() {
 
+    $(this).children("i").toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+
     var dataString = '{"idCategory":"' + $(this).attr('data-category-id') +'"}';
     console.log (dataString);
 

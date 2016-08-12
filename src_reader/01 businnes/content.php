@@ -10,7 +10,7 @@ class content {
 
   public function __construct($path,$id,$page) {
 
-    $this->items_per_page=3;
+    $this->items_per_page=10;
     $this->data=[];
 
     $this->id=$id;

@@ -1,3 +1,4 @@
+
 <div class="page-header">
     <ul class="list-group">
       <li class="list-group-item list-tracker">Opción 1</li>
@@ -15,6 +16,7 @@
             <div class="panel-heading" role="tab" id="collapseListGroupHeading{{ i }}">
                 <h4 class="panel-title">
               <a class="list-category" data-category-id="{{ trackers[0].category_ix }}" role="button" data-toggle="collapse" href="#collapseListGroup{{ i }}" aria-expanded="true" aria-controls="collapseListGroup{{ i }}">
+                <i class="glyphicon glyphicon-chevron-down"></i>
                 {{ name }}
               </a>
             </h4>
@@ -35,7 +37,10 @@
 <div>
     <ul class="list-group">
         {% for tracker in categories['Sin categoria'] %}
-        <li data-tracker-id="{{ tracker.tracker_id}}" class="list-group-item list-tracker">{{ tracker.tracker_name}}<span class="badge">14</span> </li>
+        <li data-tracker-id="{{ tracker.tracker_id}}" class="list-group-item list-tracker">
+          {{ tracker.tracker_name}}
+          <span class="badge">14</span>
+        </li>
         {% endfor %}
     </ul>
 </div>
