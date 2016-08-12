@@ -9,7 +9,7 @@ $app->get('/reader', function ($request, $response, $args) {
 $app->post('/getItemsbyCategory', function ($request, $response, $args) {
   $body=$request->getParsedBody();
   $uri=$request->getUri();
-  $content=new content($uri->getPath(),$body['idCategory']);
+  $content=new content($uri->getPath(),$body['idCategory'],1);
 
   return $this->view->render($response, 'reader\content.twig',$content->data);
 });
@@ -17,7 +17,7 @@ $app->post('/getItemsbyCategory', function ($request, $response, $args) {
 $app->post('/getItemsbyTracker', function ($request, $response, $args) {
   $body=$request->getParsedBody();
   $uri=$request->getUri();
-    $content=new content($uri->getPath(),$body['idTracker']);
+  $content=new content($uri->getPath(),$body['idTracker'],1);
 
   return $this->view->render($response, 'reader\content.twig',$content->data);
 });

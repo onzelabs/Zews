@@ -26,6 +26,38 @@ abstract class BaseMapper implements iBaseMapper {
         return ($this->get_rows($result));
     }
 
+    /*
+    public function get_by_field ($field, $option, $value) {
+        switch ($option) {
+          case 'eq':
+            $result=ORM::for_table($this->table)->where($field, $value)->find_many();
+            break;
+          case 'lt':
+            $result=ORM::for_table($this->table)->where_lt($field, $value)->find_many();
+            break;
+          case 'gt':
+            $result=ORM::for_table($this->table)->where_gt($field, $value)->find_many();
+            break;
+          case 'lte':
+            $result=ORM::for_table($this->table)->where_lte($field, $value)->find_many();
+            break;
+          case 'gte':
+            $result=ORM::for_table($this->table)->where_gte($field, $value)->find_many();
+            break;
+          case 'like':
+            $result=ORM::for_table($this->table)->where_like($field, '%'.$value.'%')->find_many();
+            break;
+          case 'not like':
+            $result=ORM::for_table($this->table)->where_not_like($field, '%'.$value.'%')->find_many();
+            break;
+          default:
+            break;
+        }
+        $result=ORM::for_table($this->table)->find_many();
+        return ($this->get_rows($result));
+    }
+    */
+    
     public function get_all_orderby ($field) {
         $result=ORM::for_table($this->table)->order_by_asc($field)->find_many();
         return($this->get_rows($result));

@@ -23,7 +23,10 @@ $(window).load(function() {
 
     $('.list-tracker').click( function() {
 
-      var dataString = '{"idTracker":"' + $(this).attr('data-tracker-id') +'"}';
+      var dataString = '{';
+      dataString=dataString + '"idTracker":"' + $(this).attr('data-tracker-id')+'"';
+      dataString=dataString + ',"page":"1"';
+      dataString=dataString + '}';
       console.log (dataString);
 
       $.ajax({
