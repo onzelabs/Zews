@@ -26,7 +26,7 @@ class sidebar {
     $this->data=[];
 
     $this->tracker_categoryMapper=new tracker_categoryMapper();
-    $this->tracker_categories=$this->tracker_categoryMapper->get_raw_data();
+    $this->tracker_categories=$this->tracker_categoryMapper->get_by_user(1);
 
     foreach ($this->tracker_categories as $tracker_category) {
       $item=$tracker_category->get_values();

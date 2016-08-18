@@ -10,7 +10,7 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap-3.3.6/dist/css/bootstrap.css" rel="stylesheet" media="screen">
-    <link href="css/reader.css" rel="stylesheet" media="screen">
+    <link href="css/reader2.css" rel="stylesheet" media="screen">
     <link href="css/content.css" rel="stylesheet" media="screen">
     <link href="css/sidebar.css" rel="stylesheet" media="screen">
 
@@ -23,38 +23,26 @@
 </head>
 
 <body>
-    <div class="">
-        <div id="site-header" class="container-fluid">
-          <div id="header">
-              {% include 'reader/header.twig' %}
-          </div>
+    <div id="header">
+      {% include 'reader/header.twig' %}
+    </div>
 
-          <div id="navigation">
-              {% include 'reader/navigation.twig' %}
-          </div>
+    <div id="wrapper">
+      <div class="row-offcanvas row-offcanvas-left">
+
+        <!-- sidebar -->
+        <div id="sidebar-wrapper" class="col-xs-3 sidebar-offcanvas" role="navigation">
+            {% include 'reader/sidebar.twig' %}
         </div>
 
-        <div id="main" class="container-fluid">
-
-          <div class="row-offcanvas row-offcanvas-left">
-            <!-- sidebar -->
-            <div id="sidebar" class="col-xs-3 sidebar-offcanvas" role="navigation">
-                  {% include 'reader/sidebar.twig' %}
-            </div>
-
-            <div id="content" class="col-xs-9 pull-right" data-option="all">
-              <div id="content-list" data-loading="off" data-page="1">
-                {% include 'reader/content.twig' %}
-              </div>
-            </div>
+        <div id="main-wrapper">
+          <div id="content" class="col-xs-9 pull-right" data-option="all">
+            <section id="content-list" data-loading="off" data-page="1">
+              {% include 'reader/content.twig' %}
+            </section>
           </div>
         </div>
-
-        <div id="footer">
-            {% include 'reader/footer.twig' %}
-        </div>
-
-
+        -->
     </div>
 
     <script src="js/jquery-2.2.4.min.js"></script>

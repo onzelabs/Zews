@@ -2,7 +2,7 @@
 
 class item extends BaseDO {
     protected $id;
-    protected $feed_ix;
+    protected $tracker_ix;
     protected $logger_ix;
     protected $element;
     protected $title;
@@ -21,6 +21,14 @@ class item extends BaseDO {
     public function __construct () {
     }
 
+    public function get_tracker_name () {
+      $trackerMapper=new trackerMapper();
+      $tracker=$trackerMapper->get_by_id($this->tracker_ix);
+      return $tracker->get_name();
+    }
+
+    /* Getters & Setters */
+
     public function get_id(){
         return $this->id;
     }
@@ -29,12 +37,12 @@ class item extends BaseDO {
         $this->id = $id;
     }
 
-    public function get_feed_ix(){
-        return $this->feed_ix;
+    public function get_tracker_ix(){
+        return $this->tracker_ix;
     }
 
-    public function set_feed_ix($feed_ix){
-        $this->feed_ix = $feed_ix;
+    public function set_tracker_ix($tracker_ix){
+        $this->tracker_ix = $tracker_ix;
     }
 
     public function get_logger_ix(){

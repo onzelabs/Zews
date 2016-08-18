@@ -21,7 +21,7 @@ class rss_Reader extends abstractTracker {
 
         foreach ($feedItems as $f) {
             $itemDO=new item();
-            $itemDO->set_feed_ix($feedDO->get_id());
+            $itemDO->set_tracker_ix($feedDO->get_id());
             $itemDO->set_element('');
             $itemDO->set_title($f->get_title());
             $itemDO->set_link($f->get_link());
@@ -50,7 +50,7 @@ class rss_Reader extends abstractTracker {
         $feedMapper=new feedMapper();
         $feedDO=$feedMapper->get_by_id($this->id);
         // DATE - Solo extrae la fecha. Se seleccionan ITEMS del día.
-        $sql='SELECT title FROM item WHERE feed_ix='.$feedDO->get_id().' AND DATE_FORMAT(created_at,"%Y-%m-%d")=STR_TO_DATE("'.$this->start_at.'", "%Y-%m-%d")';
+        $sql='SELECT title FROM item WHERE tracker_ix='.$feedDO->get_id().' AND DATE_FORMAT(created_at,"%Y-%m-%d")=STR_TO_DATE("'.$this->start_at.'", "%Y-%m-%d")';
 
         $itemMapper=new itemMapper();
         $itemDO=$itemMapper->get_by_query($sql);

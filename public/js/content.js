@@ -1,18 +1,65 @@
 $( "#content" ).scroll(function() {
+//$( window ).scroll(function() {
 
-  //console.log($(this).scrollTop()+' '+$(this).height()+' '+$(this).offsetTop);
+      scrolltop = $(this).scrollTop();
+      docheight = $("#content-list").height()+40; //40 for page-header margin
+      divheight = $(this).height();
 
-      var wintop = $(this).scrollTop();
-      docheight = $("#content-full").height();
-      winheight = $(this).height();
-      var  scrolltrigger = 0.95;
+      console.log('ST:'+scrolltop);
+      console.log('DH:'+docheight);
+      console.log('DiH:'+divheight);
+      console.log('Diff:'+(docheight-divheight));
 
-      console.log('wintop='+wintop);
-      //console.log('docheight='+docheight);
-      //console.log('winheight='+winheight);
-      //console.log(wintop+'=='+(docheight-winheight));
-      //console.log(wintop==(docheight-winheight));
-      //console.log(docheight-winheight);
-      console.log('%scrolled='+(wintop/(docheight-winheight))*100);
+      if ( (scrolltop/(docheight-divheight))>0.95 && $('#content-list').data('loading')=='off') {
 
+        $('#content-list').data('loading','on');
+        $('#content-list').append('<div class="oz-loading"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></div>');
+
+
+        /*
+        if ($(this).hasClass("oz-byCategory")) {
+          url="./getItemsbyCategory";
+          var dataString = '{"idCategory":"' + $(this).attr('data-category-id') +'"}';
+        } else {
+          url="./getItemsbyTracker";
+          page=$('#content-list').data('page')+1;
+          var dataString = '{';
+          dataString=dataString + '"idTracker":"' + $('.oz-feed-selected').attr('data-tracker-id')+'"';
+          dataString=dataString + ',"page":"'+page+'"';
+          dataString=dataString + '}';
+        }
+        */
+        page=$('#content-list').data('page')+1;
+        switch ($('#content').data('option')) {
+          case 'all':
+            dataString = '{';
+            dataString=dataString + '"id":"0"';
+            dataString=dataString + ',"page":"'+page+'"';
+            dataString=dataString + '}';
+            url='./reader/all';
+            break;
+          default:
+
+        }
+
+        $.ajax({
+            url     : url,
+            type    : "POST",
+            data    : dataString,
+            contentType:"application/json; charset=utf-8",
+            dataType: "html",
+            success : function( data ) {
+                        $('#content-list').append (data);
+                        $('#content-list').data('loading','off');
+                        $('.oz-loading').remove();
+                        if (data!='') {
+                          $('#content-list').data('page',page);
+                          console.log('PAGE:'+page);
+                        }
+                      },
+            error   : function(jqXHR, textStatus, errorThrown){
+                        console.log(errorThrown);
+                      }
+        });
+      }
 });
