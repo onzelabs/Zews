@@ -2,7 +2,7 @@ $( "#content" ).scroll(function() {
 //$( window ).scroll(function() {
 
       scrolltop = $(this).scrollTop();
-      docheight = $("#content-list").height()+40; //40 for page-header margin
+      docheight = $("#content-list").height(); 
       divheight = $(this).height();
 
       console.log('ST:'+scrolltop);
@@ -10,9 +10,9 @@ $( "#content" ).scroll(function() {
       console.log('DiH:'+divheight);
       console.log('Diff:'+(docheight-divheight));
 
-      if ( (scrolltop/(docheight-divheight))>0.95 && $('#content-list').data('loading')=='off') {
+      if ( (scrolltop/(docheight-divheight))>0.95 && $('#content').data('loading')=='off') {
 
-        $('#content-list').data('loading','on');
+        $('#content').data('loading','on');
         $('#content-list').append('<div class="oz-loading"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></div>');
 
 
@@ -29,7 +29,7 @@ $( "#content" ).scroll(function() {
           dataString=dataString + '}';
         }
         */
-        page=$('#content-list').data('page')+1;
+        page=$('#content').data('page')+1;
         switch ($('#content').data('option')) {
           case 'all':
             dataString = '{';
@@ -50,10 +50,10 @@ $( "#content" ).scroll(function() {
             dataType: "html",
             success : function( data ) {
                         $('#content-list').append (data);
-                        $('#content-list').data('loading','off');
+                        $('#content').data('loading','off');
                         $('.oz-loading').remove();
                         if (data!='') {
-                          $('#content-list').data('page',page);
+                          $('#content').data('page',page);
                           console.log('PAGE:'+page);
                         }
                       },

@@ -12,7 +12,7 @@
     <link href="css/bootstrap-3.3.6/dist/css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="css/reader.css" rel="stylesheet" media="screen">
     <link href="css/content.css" rel="stylesheet" media="screen">
-    <link href="css/sidebar.css" rel="stylesheet" media="screen">
+    <link href="css/offcanvas.css" rel="stylesheet" media="screen">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -24,6 +24,7 @@
 
 <body>
     <div class="">
+
         <div id="site-header" class="container-fluid">
           <div id="header">
               {% include 'reader/header.twig' %}
@@ -34,20 +35,22 @@
           </div>
         </div>
 
+
         <div id="main" class="container-fluid">
 
-          <div class="row-offcanvas row-offcanvas-left">
-            <!-- sidebar -->
-            <div id="sidebar" class="col-xs-3 sidebar-offcanvas" role="navigation">
+          <div class="row row-offcanvas row-offcanvas-left">
+
+            <div id="sidebar" class="col-xs-6 col-sm-2 sidebar-offcanvas" role="navigation">
                   {% include 'reader/sidebar.twig' %}
             </div>
 
-            <div id="content" class="col-xs-9 pull-right" data-option="all">
-              <div id="content-list" data-loading="off" data-page="1">
+            <div id="content" class="col-xs-12 col-sm-10" data-option="all" data-loading="off" data-page="1">
+              <div id="content-list">
                 {% include 'reader/content.twig' %}
               </div>
             </div>
           </div>
+
         </div>
 
         <div id="footer">
