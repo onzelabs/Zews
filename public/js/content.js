@@ -2,7 +2,7 @@ $( "#content" ).scroll(function() {
 //$( window ).scroll(function() {
 
       scrolltop = $(this).scrollTop();
-      docheight = $("#content-list").height(); 
+      docheight = $("#content-list").height();
       divheight = $(this).height();
 
       console.log('ST:'+scrolltop);
@@ -15,20 +15,6 @@ $( "#content" ).scroll(function() {
         $('#content').data('loading','on');
         $('#content-list').append('<div class="oz-loading"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></div>');
 
-
-        /*
-        if ($(this).hasClass("oz-byCategory")) {
-          url="./getItemsbyCategory";
-          var dataString = '{"idCategory":"' + $(this).attr('data-category-id') +'"}';
-        } else {
-          url="./getItemsbyTracker";
-          page=$('#content-list').data('page')+1;
-          var dataString = '{';
-          dataString=dataString + '"idTracker":"' + $('.oz-feed-selected').attr('data-tracker-id')+'"';
-          dataString=dataString + ',"page":"'+page+'"';
-          dataString=dataString + '}';
-        }
-        */
         page=$('#content').data('page')+1;
         switch ($('#content').data('option')) {
           case 'all':
@@ -38,7 +24,22 @@ $( "#content" ).scroll(function() {
             dataString=dataString + '}';
             url='./reader/all';
             break;
+          case 'category':
+            dataString = '{';
+            dataString=dataString + '"id":"' + $('.oz-category-selected').attr('data-tracker-id')+'"';
+            dataString=dataString + ',"page":"'+page+'"';
+            dataString=dataString + '}';
+            url="./reader/category/"+$('.oz-category-selected').attr('data-category-id-id');
+            break;
+          case 'tracker':
+            dataString = '{';
+            dataString=dataString + '"id":"' + $('.oz-tracker-selected').attr('data-tracker-id')+'"';
+            dataString=dataString + ',"page":"'+page+'"';
+            dataString=dataString + '}';
+            url="./reader/tracker/"+$('.oz-tracker-selected').attr('data-tracker-id');
+            break;
           default:
+            break;
 
         }
 
