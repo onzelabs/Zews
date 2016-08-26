@@ -37,7 +37,7 @@
 <div>
     <ul class="list-group">
         {% for tracker in categories['Sin categoria'] %}
-        <li data-tracker-id="{{ tracker.tracker_id}}" class="list-group-item list-tracker">
+        <li data-tracker-id="{{ tracker.tracker_id}}" class="list-group-item list-tracker" draggable="true">
           {{ tracker.tracker_name}}
           <span class="badge">14</span>
         </li>

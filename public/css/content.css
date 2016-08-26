@@ -1,7 +1,7 @@
 #content {
   display: block;
   padding: 0px 0 0px 0;
-    overflow: auto;
+  overflow: auto;
 }
 
 #content-list {
@@ -32,4 +32,13 @@
     display: block;
     text-align:center;
     top:-10%;
+}
+
+.oz-item {
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table {
+  margin-bottom: 0px;
 }

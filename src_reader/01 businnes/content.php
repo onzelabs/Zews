@@ -16,7 +16,7 @@ class content {
 
     $this->page=$page;
     $this->items=[];
-    $this->items_per_page=9;
+    $this->items_per_page=20;
 
     switch ($path) {
       case 'all':

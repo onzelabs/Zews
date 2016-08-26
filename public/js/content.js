@@ -18,25 +18,13 @@ $( "#content" ).scroll(function() {
         page=$('#content').data('page')+1;
         switch ($('#content').data('option')) {
           case 'all':
-            dataString = '{';
-            dataString=dataString + '"id":"0"';
-            dataString=dataString + ',"page":"'+page+'"';
-            dataString=dataString + '}';
-            url='./reader/all';
+            url='./reader/all/page/'+page;
             break;
           case 'category':
-            dataString = '{';
-            dataString=dataString + '"id":"' + $('.oz-category-selected').attr('data-tracker-id')+'"';
-            dataString=dataString + ',"page":"'+page+'"';
-            dataString=dataString + '}';
-            url="./reader/category/"+$('.oz-category-selected').attr('data-category-id-id');
+            url="./reader/category/"+$('.oz-category-selected').attr('data-category-id-id')+"/page/"+page;;
             break;
           case 'tracker':
-            dataString = '{';
-            dataString=dataString + '"id":"' + $('.oz-tracker-selected').attr('data-tracker-id')+'"';
-            dataString=dataString + ',"page":"'+page+'"';
-            dataString=dataString + '}';
-            url="./reader/tracker/"+$('.oz-tracker-selected').attr('data-tracker-id');
+            url="./reader/tracker/"+$('.oz-tracker-selected').attr('data-tracker-id')+"/page/"+page;
             break;
           default:
             break;
@@ -45,8 +33,7 @@ $( "#content" ).scroll(function() {
 
         $.ajax({
             url     : url,
-            type    : "POST",
-            data    : dataString,
+            type    : "GET",
             contentType:"application/json; charset=utf-8",
             dataType: "html",
             success : function( data ) {
