@@ -1,6 +1,6 @@
 <?php
 
-class content {
+class contentController {
 
   public $data;
   private $id;

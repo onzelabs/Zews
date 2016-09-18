@@ -4,7 +4,7 @@
 
 $app->get('/reader', function ($request, $response, $args) {
 
-  $sidebar=new sidebar();
+  $sidebar=new sidebarController();
   return $this->view->render($response, 'reader\reader.twig',$sidebar->data);
 
 });
@@ -12,17 +12,17 @@ $app->get('/reader', function ($request, $response, $args) {
 /* Sidebar */
 
 $app->get('/reader/all/page/{page}', function ($request, $response, $args) {
-  $content=new content('all',0,$args['page']);
+  $content=new contentController('all',0,$args['page']);
   return $this->view->render($response, 'reader\content.twig',$content->getData());
 });
 
 $app->get('/reader/category/{id}/page/{page}', function ($request, $response, $args) {
-  $content=new content('category',$args['id'],$args['page']);
+  $content=new contentController('category',$args['id'],$args['page']);
   return $this->view->render($response, 'reader\content.twig',$content->getData());
 });
 
 $app->get('/reader/tracker/{id}/page/{page}', function ($request, $response, $args) {
-  $content=new content('tracker',$args['id'],$args['page']);
+  $content=new contentController('tracker',$args['id'],$args['page']);
   return $this->view->render($response, 'reader\content.twig',$content->getData());
 });
 

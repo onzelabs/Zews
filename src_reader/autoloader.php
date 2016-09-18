@@ -4,23 +4,19 @@
  * autoloader to load classes in /src/models/
  */
 spl_autoload_register(function ($class) {
-                if (is_file($file = dirname(__FILE__) . '/01 businnes/' . $class . '.php')) {
+                if (is_file($file = dirname(__FILE__) . '/02 controllers/' . $class . '.php')) {
                     require $file;
                 }
 
-                if (is_file($file = dirname(__FILE__) . '/01 businnes/do/' . $class . '.php')) {
+                if (is_file($file = dirname(__FILE__) . '/03 model/do/' . $class . '.php')) {
                     require $file;
                 }
 
-                if (is_file($file = dirname(__FILE__) . '/02 model/' . $class . '.php')) {
+                if (is_file($file = dirname(__FILE__) . '/03 model/mapper/' . $class . '.php')) {
                     require $file;
                 }
 
-                if (is_file($file = dirname(__FILE__) . '/02 model/mapper/' . $class . '.php')) {
-                    require $file;
-                }
-
-                if (is_file($file = dirname(__FILE__) . '/03 util/' . $class . '.php')) {
+                if (is_file($file = dirname(__FILE__) . '/04 util/' . $class . '.php')) {
                     require $file;
                 }
 

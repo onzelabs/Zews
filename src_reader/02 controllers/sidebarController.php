@@ -1,6 +1,6 @@
 <?php
 
-class sidebar {
+class sidebarController {
 
   public $data;
 

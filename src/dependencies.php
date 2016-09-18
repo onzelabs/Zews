@@ -20,7 +20,7 @@ $container['logger'] = function ($c) {
 
 // Register Twig View helper
 $container['view'] = function ($container) {
-    $view = new \Slim\Views\Twig('../templates');
+    $view = new \Slim\Views\Twig('../src_reader/01 view');
     $view->addExtension(new \Slim\Views\TwigExtension(
         $container['router'],
         $container['request']->getUri()
