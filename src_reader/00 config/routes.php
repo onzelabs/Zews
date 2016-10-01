@@ -18,12 +18,14 @@ $app->get('/reader/all/page/{page}', function ($request, $response, $args) {
 
 $app->get('/reader/category/{id}/page/{page}', function ($request, $response, $args) {
   $content=new contentController('category',$args['id'],$args['page']);
+  //Aqui lanzar content_category
   return $this->view->render($response, 'reader\content.twig',$content->getData());
 });
 
 $app->get('/reader/tracker/{id}/page/{page}', function ($request, $response, $args) {
   $content=new contentController('tracker',$args['id'],$args['page']);
-  return $this->view->render($response, 'reader\content.twig',$content->getData());
+  //Aqui lanzar content_tracker
+  return $this->view->render($response, 'reader\content_tracker.twig',$content->getData());
 });
 
 /* Content */

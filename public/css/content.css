@@ -39,6 +39,11 @@
   padding: 8px;
 }
 
+.oz-title {
+  overflow: hidden;
+  height: 20px;
+}
+
 .table {
   margin-bottom: 0px;
 }

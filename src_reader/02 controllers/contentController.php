@@ -40,6 +40,30 @@ class contentController {
 
     foreach ($this->items as $item) {
       $row=$item->get_values();
+      //title
+      $title=$item->get_title();
+      $description=$item->get_description();
+      if (strlen($title)+strlen($description)>150) {
+          $row['description']=substr($description,0,150-strlen($title)-3);
+      }
+      //pubdate
+      $pubdate=date("Ymd",strtotime($item->get_pubdate()));
+      $today=date("Ymd");
+      $diff=$today-$pubdate;
+      switch ($diff) {
+        case 0:
+          $row['pubdate']=date("H:i",strtotime($item->get_pubdate()));;
+          break;
+        case 1:
+          $row['pubdate']="Yesterday";
+        default:
+          if ($diff<365) {
+            $row['pubdate']=date("M d",strtotime($item->get_pubdate()));;
+          } else {
+            $row['pubdate']=date("M d, Y",strtotime($item->get_pubdate()));;
+          }
+          break;
+      }
       $row['tracker']=$item->get_tracker_name();
       array_push($data['items'],$row);
     }
